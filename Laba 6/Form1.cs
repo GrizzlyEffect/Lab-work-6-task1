@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using static Laba_6.Class1;
 using System.Windows.Forms;
-using static Laba_6.Class1;
+using System;
 
 namespace Laba_6
 {
@@ -23,11 +16,8 @@ namespace Laba_6
             double baseA = double.Parse(ParalBase.Text);
             double heightH = double.Parse(ParalHeight.Text);
 
-            Parallelogram parallelogram = new Parallelogram(baseA, heightH);
-
-            double area = parallelogram.GetArea();
-
-            lbResultParal.Text = area.ToString();
+            Shape shape = new Parallelogram(baseA, heightH);
+            DisplayArea(shape, lbResultParal);
         }
 
         private void btnCalcTrapez_Click(object sender, EventArgs e)
@@ -36,11 +26,13 @@ namespace Laba_6
             double base2 = double.Parse(TrapBase2.Text);
             double height = double.Parse(TrapHeight.Text);
 
-            Trapezium trapezium = new Trapezium(base1, base2, height);
+            Shape shape = new Trapezium(base1, base2, height);
+            DisplayArea(shape, lbResultTrapez);
+        }
 
-            double area = trapezium.GetArea();
-
-            lbResultTrapez.Text = area.ToString();
+        private void DisplayArea(Shape shape, Label label)
+        {
+            label.Text = shape.GetArea().ToString();
         }
     }
 }
